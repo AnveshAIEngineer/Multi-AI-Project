@@ -179,7 +179,7 @@ st.markdown("</div>", unsafe_allow_html=True)
 
 # ---------------- API ----------------
 
-API_URL = "http://127.0.0.1:9999/chat"
+API_URL = "http://localhost:9999/chat"
 
 # ---------------- BUTTON ----------------
 
@@ -204,7 +204,8 @@ if st.button("Generate Response"):
                 response = requests.post(
                     API_URL,
                     json=payload,
-                    timeout=120
+                    timeout=120,
+                    headers={"Content-Type": "application/json"}
                 )
 
             if response.status_code == 200:
@@ -230,10 +231,4 @@ if st.button("Generate Response"):
 
             logger.error(str(e))
 
-            st.error(
-                str(
-                    CustomException(
-                        "Failed to communicate with backend"
-                    )
-                )
-            )
+            st.error(f"REAL ERROR: {str(e)}")

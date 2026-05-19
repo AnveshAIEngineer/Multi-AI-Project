@@ -25,4 +25,4 @@ EXPOSE 8501
 EXPOSE 9999
 
 # Run the app 
-CMD ["python", "app/main.py"]
+CMD streamlit run app/frontend/ui.py --server.port 8501 & uvicorn app.backend.api:app --host 0.0.0.0 --port 9999
