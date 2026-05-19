@@ -1,5 +1,5 @@
 from langchain_groq import ChatGroq
-from langchain_tavily import TavilySearch
+from langchain_community.tools.tavily_search import TavilySearchResults
 from langchain_core.messages import HumanMessage, SystemMessage
 
 from app.config.settings import settings
@@ -49,7 +49,7 @@ def get_response_from_ai_agents(llm_id, query, allow_search, system_prompt):
     # Tavily Search
     if allow_search:
         try:
-            search_tool = TavilySearch(max_results=2)
+            search_tool = TavilySearchResults(max_results=2)
 
             search_results = search_tool.invoke(query)
 
