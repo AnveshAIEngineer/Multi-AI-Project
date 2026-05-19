@@ -4,7 +4,7 @@ pipeline{
     environment {
         SONAR_PROJECT_KEY = 'LLMOPS'
 		SONAR_SCANNER_HOME = tool 'Sonarqube'
-        AWS_REGION = 'southeast-2'
+        AWS_REGION = 'ap-southeast-2'
         ECR_REPO = 'my-repo'
         IMAGE_TAG = 'latest'
 	}
